@@ -260,7 +260,7 @@ def augment_dialogue(in_dialogue, in_slot_values):
 
 def plus_dataset(in_src_root, in_result_size):
     dataset_files = get_files_list(in_src_root, 'task1-API-calls')
-    babi_files = [(filename, read_task(filename)) for filename in dataset_files]
+    babi_files = [(filename, read_task(filename)) for filename in dataset_files if path.exists(filename)]
     full_babi = reduce(
         lambda x, y: x + y[1],
         babi_files,
